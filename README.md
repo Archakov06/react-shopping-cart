@@ -1,4 +1,4 @@
-Интернет-магазин книг - [Demo](react-redux-shopping-cart.surge.sh)
+Интернет-магазин книг - [Demo](http://react-redux-shopping-cart.surge.sh?demo)
 
 **Stack:**
 
