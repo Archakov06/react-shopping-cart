@@ -52,7 +52,8 @@ const Book = ({
       </div>
       <div>
         Рейтинг: &nbsp;
-        <Rating icon="star" defaultRating={rating} maxRating={5} />
+        <Rating icon="star" rating={rating} maxRating={5} />
+        &nbsp;{rating} / 5
       </div>
     </Card.Content>
   </Card>

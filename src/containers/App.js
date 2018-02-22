@@ -12,6 +12,8 @@ import * as books from '../actions/books';
 import * as cart from '../actions/cart';
 
 const filterBooks = (type, searchQuery, books) => {
+  window.orderBy = orderBy;
+  window.books = books;
   if (!books) {
     return null;
   }
