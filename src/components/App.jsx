@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
-import { Container, Card, Grid, Loader } from 'semantic-ui-react';
-
-import { Menu, Book, Sidebar } from './';
+import { Container } from 'semantic-ui-react';
+import axios from 'axios';
+import BookCard from '../containers/BookCard';
+import Filter from '../containers/Filter';
+import Menu from '../containers/Menu';
+import { Card } from 'semantic-ui-react';
 
 class App extends Component {
-  componentDidMount() {
-    const { fetchBooks } = this.props;
-    fetchBooks();
+  componentWillMount() {
+    const { setBooks } = this.props;
+    axios.get('/books.json').then(({ data }) => {
+      setBooks(data);
+    });
   }
 
   render() {
-    const {
-      items,
-      isLoading,
-      addToCart,
-      removeFromCart,
-      cartItems,
-      getCartItem,
-      searchQuery
-    } = this.props;
+    const { books, isReady } = this.props;
     return (
       <Container>
-        <Menu items={cartItems} />
-
-        <Grid className="wrapper">
-          <Grid.Column width={12}>
-            {isLoading && !items ? (
-              <Loader active inline="centered" content="Загрузка..." />
-            ) : (
-              <Card.Group itemsPerRow={3}>
-                {items.map((bookProps, i) => (
-                  <Book
-                    {...bookProps}
-                    addToCart={addToCart}
-                    removeFromCart={removeFromCart}
-                    key={i}
-                    cartItem={getCartItem(cartItems, bookProps.id)}
-                  />
-                ))}
-              </Card.Group>
-            )}
-            {searchQuery && !items.length && <h2>Ничего не найдено :(</h2>}
-          </Grid.Column>
-          <Grid.Column width={4}>
-            <Sidebar />
-          </Grid.Column>
-        </Grid>
+        <Menu />
+        <Filter />
+        <Card.Group itemsPerRow={4}>
+          {!isReady
+            ? 'Загрузка...'
+            : books.map((book, i) => <BookCard key={i} {...book} />)}
+        </Card.Group>
       </Container>
     );
   }

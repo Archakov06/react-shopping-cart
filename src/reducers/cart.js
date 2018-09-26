@@ -1,5 +1,5 @@
 const initialState = {
-  items: []
+  items: [],
 };
 
 export default (state = initialState, action) => {
@@ -7,13 +7,14 @@ export default (state = initialState, action) => {
     case 'ADD_TO_CART':
       return {
         ...state,
-        items: [...state.items, action.payload]
+        items: [...state.items, action.payload],
       };
     case 'REMOVE_FROM_CART':
       return {
         ...state,
-        items: state.items.filter(o => o !== action.payload)
+        items: state.items.filter(o => o.id != action.payload),
       };
+      break;
     default:
       return state;
   }

@@ -7,5 +7,5 @@ import filter from './filter';
 export default combineReducers({
   books,
   cart,
-  filter
+  filter,
 });
