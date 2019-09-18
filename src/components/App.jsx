@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Container } from 'semantic-ui-react';
+import { Card, Container } from 'semantic-ui-react';
 import axios from 'axios';
+
 import BookCard from '../containers/BookCard';
 import Filter from '../containers/Filter';
 import Menu from '../containers/Menu';
-import { Card } from 'semantic-ui-react';
 
 class App extends Component {
   componentWillMount() {

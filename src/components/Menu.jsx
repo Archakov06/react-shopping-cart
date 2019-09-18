@@ -1,5 +1,5 @@
-import React from 'react';
-import { Menu, Popup, List, Button, Image } from 'semantic-ui-react';
+import React from "react";
+import { Menu, Popup, List, Button, Image } from "semantic-ui-react";
 
 const CartComponent = ({ title, id, image, removeFromCart }) => (
   <List selection divided verticalAlign="middle">
@@ -17,22 +17,22 @@ const CartComponent = ({ title, id, image, removeFromCart }) => (
 
 const MenuComponent = ({ totalPrice, count, items }) => (
   <Menu>
-    <Menu.Item name="browse" onClick={this.handleItemClick}>
-      Магазин книг
-    </Menu.Item>
+    <Menu.Item name="browse">Магазин книг</Menu.Item>
 
     <Menu.Menu position="right">
-      <Menu.Item name="signup" onClick={this.handleItemClick}>
+      <Menu.Item name="signup">
         Итого: &nbsp; <b>{totalPrice}</b>&nbsp;руб.
       </Menu.Item>
 
       <Popup
         trigger={
-          <Menu.Item name="help" onClick={this.handleItemClick}>
+          <Menu.Item name="help">
             Корзина (<b>{count}</b>)
           </Menu.Item>
         }
-        content={items.map(book => <CartComponent {...book} />)}
+        content={items.map(book => (
+          <CartComponent {...book} />
+        ))}
         on="click"
         hideOnScroll
       />

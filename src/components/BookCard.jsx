@@ -5,7 +5,9 @@ const BookCard = book => {
   const { title, author, price, image, addToCart, addedCount } = book;
   return (
     <Card>
-      <Image src={image} />
+      <div className="card-image">
+        <Image src={image} />
+      </div>
       <Card.Content>
         <Card.Header>{title}</Card.Header>
         <Card.Meta>

@@ -9,3 +9,12 @@ body {
 .popup {
   max-width: 400px !important;
 }
+
+.card-image {
+  height: 350px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+}
